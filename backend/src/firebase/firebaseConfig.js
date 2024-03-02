@@ -7,8 +7,8 @@ const firebaseConfig = {
   projectId: "gizasystemsinterview",
   storageBucket: "gizasystemsinterview.appspot.com",
   messagingSenderId: "988513943025",
-  appId: "1:988513943025:web:5b31370fd196fb12c29850",
-  measurementId: "G-RSJ936YTCN"
+  appId: "1:988513943025:web:9c62f6b03fcca6d5c29850",
+  measurementId: "G-QJ9NDC4VR7"
 };
 
 firebaseApp.initializeApp(firebaseConfig);

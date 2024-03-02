@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TextField, Button, Container, Typography, Grid, CssBaseline } from '@mui/material';
 import '../style/LoginComponent.css';
-const LoginPage = () => {
+const LoginPage = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -9,7 +9,12 @@ const LoginPage = () => {
     const [userData, setUserData] = useState({});
     const login = require('../services/login').loginForm;
 
-
+    
+    const setUserDataContainer = (data) => {
+        setUserData(data);
+        props.onLogin(data.displayName);
+        clearForm();
+    }
     const clearForm = () => {
         setErrorMessage('');
         setEmail('');
@@ -37,11 +42,7 @@ const LoginPage = () => {
         }
 
 
-        const loginSuccess = login(email, password, setToken, setUserData, setErrorMessage);
-        // Clear form fields
-        if (loginSuccess) {
-            clearForm();
-        }
+        login(email, password, setToken, setUserDataContainer, setErrorMessage);
     };
 
     return (

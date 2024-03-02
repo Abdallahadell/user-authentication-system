@@ -1,5 +1,5 @@
 import axios from 'axios';
-const loginApi = (data, setErrorMessage, setToken, setUserData) => {
+const loginApi =  (data, setErrorMessage, setToken, setUserData) => {
     try {
         const BASE_API_URL = process.env.REACT_APP_API_BASE_URL || '';
         const email = data.email;

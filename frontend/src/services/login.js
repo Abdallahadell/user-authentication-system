@@ -7,8 +7,6 @@ const loginForm = (email, password, setToken, setUserData, setErrorMessage) => {
         email,
         password
     }
-    const responseState = loginApi(data, setErrorMessage, setToken, setUserData);
-    return responseState;
-
+    loginApi(data, setErrorMessage, setToken, setUserData);
 }
 export {loginForm};

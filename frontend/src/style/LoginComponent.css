@@ -7,10 +7,10 @@
   
   .form {
     width: 100%; /* Fix IE 11 issue. */
-    margin-top: 3rem;
+    margin-top: 10px;
   }
   
   .submit {
-    margin: 3rem 0 2rem;
+    margin: 10px 0px!important;
   }
   
