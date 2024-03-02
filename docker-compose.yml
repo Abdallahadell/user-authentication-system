@@ -1,0 +1,22 @@
+version: "3"
+services:
+  backend:
+    build:
+      context: ./backend   
+    container_name: docker-mern-backend
+    ports:
+      - "3000:80"
+    environment:
+      - NODE_ENV=production
+    restart: always
+
+  nginx:
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile
+    container_name: docker-mern-nginx
+    ports:
+      - "80:80"           
+    depends_on:
+      - backend
+    restart: always
