@@ -25,7 +25,7 @@ const registrationForm = (email, password, displayName, res) => {
     }).catch((error) => {
         if(!!error.code){ 
             if(error.code === 'auth/email-already-in-use'){
-                res.status(400).send('Email already in use');
+                res.status(401).send('Email already in use');
             } else if(error.code === 'auth/invalid-email'){
                 res.status(400).send('Invalid email');
             } else if(error.code === 'auth/weak-password'){
