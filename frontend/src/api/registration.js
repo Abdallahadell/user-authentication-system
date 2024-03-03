@@ -14,18 +14,11 @@ const registrationApi = async (formData, setSubmitMsg) => {
                 'Content-Type': 'application/json'
             }
         });
-        // Check for success (2xx status codes)
         if (response.status >= 200 && response.status < 300) {
             setSubmitMsg('Registration successful');
             return true;
-        } else if (response.status === 400) {
-            // Handle specific error for 400 Bad Request
-            const errorData = response.data; // Assuming the error details are in JSON format
-            console.error('Bad Request:', errorData);
-            setSubmitMsg('Registration failed');
-            return false;
-            // Handle the error, update state, or show a user-friendly message
-        } else {
+        }
+         else {
             // Handle other error status codes
             console.error('Error:', response.statusText);
             //show a user-friendly message
@@ -33,8 +26,14 @@ const registrationApi = async (formData, setSubmitMsg) => {
             return false;
         }
     } catch (error) {
-        console.error('Error:', error.message);
-        setSubmitMsg('Registration failed');
+        if(!!error.response && !!error.response.status){
+            if(error.response.status === 401){
+                setSubmitMsg('Email already in use');
+            } else {
+                console.error('Error:', error);
+                setSubmitMsg('Registration failed');
+            }
+        }
         return false;
     // Handle the error, update state, or show a user-friendly message
     }
